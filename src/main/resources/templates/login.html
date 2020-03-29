@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head>
+<title>HealthMe.</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar"
+	data-offset="60">
+	<div th:replace="fragments/header :: header"></div>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<br>
+	<br>
+	<section class="container-fluid login-block">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 login-sec">
+					<h2 class="text-center">Login Now</h2>
+					<form class="login-form" th:action="@{/login}" method="post">
+						<div class="form-group">
+							<label for="exampleInputEmail1" class="text-uppercase">Username</label>
+							<input type="text" class="form-control" placeholder=""
+								name="username">
+						</div>
+				
+						<div class="form-group">
+							<label for="exampleInputPassword1" class="text-uppercase">Password</label>
+							<input type="password" class="form-control" placeholder=""
+								name="password">
+						</div>
+
+
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+
+					</form>
+				</div>
+				<div class="col-md-8">
+				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img th:src="@{/images/healthmecarousel01.jpeg}" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Eat Clean!</h3>
+        </div>
+      </div>
+
+      <div class="item">
+        <img th:src="@{/images/healthmecarousel02.jpeg}" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Train Mean!</h3>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img th:src="@{/images/healthmecarousel03.jpeg}" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Get Lean!</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+				</div>
+			</div>
+	</section>
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+
+
+
+</html>
