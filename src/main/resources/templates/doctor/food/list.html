@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Food Entry Manager</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div align="center" class="container-fluid">
+		<h1>Food List</h1>
+		<a href="/doctor/food/add" class="btn btn-primary">Add New Item</a> <br />
+		<br />
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<!--<th>FoodItem ID</th>-->
+					<th>Name</th>
+					<th>Quantity</th>
+					<th>Unit</th>
+					<th>Calories</th>
+					<th>Proteins</th>
+					<th>Carbohydrates</th>
+					<th>Fat</th>
+					<th>Options<th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="food : ${listFood}">
+					<!--  <td th:text="${food.id}">FoodItem ID</td> -->
+					<td th:text="${food.name}">Name</td>
+					<td th:text="${food.quantity}">Quantity</td>
+					<td th:text="${food.unit}">Unit</td>
+					<td th:text="${food.calories}">Calories</td>
+					<td th:text="${food.proteins}">Proteins</td>
+					<td th:text="${food.carbohydrates}">Carbohydrates</td>
+					<td th:text="${food.fat}">Fat</td>
+					<td><a th:href="@{'/doctor/food/modify/' + ${food.id}}">Modify</a>
+						&nbsp;&nbsp;&nbsp; 
+						<a th:href="@{'/doctor/food/delete/' + ${food.id}}">Delete</a>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

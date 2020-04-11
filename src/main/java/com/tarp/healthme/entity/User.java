@@ -25,7 +25,29 @@ public class User implements UserDetails{
 	private String password;
 	private String role;
 
+	@ManyToOne
+	private User doctor;
+	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "doctor")
+	private Collection<User> clients;
+	
 	public User() {}
+
+	public User getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(User doctor) {
+		this.doctor = doctor;
+	}
+
+	public Collection<User> getClients() {
+		return clients;
+	}
+
+	public void setClients(Collection<User> clients) {
+		this.clients = clients;
+	}
 
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
@@ -99,7 +121,7 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() { 
 		Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_"+ this.role));
-		return null;
+		return grantedAuthorities;
 	}
 
 	@Override

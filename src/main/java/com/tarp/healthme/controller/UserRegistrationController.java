@@ -18,7 +18,7 @@ import com.tarp.healthme.validator.UserValidator;
 
 
 @Controller
-@RequestMapping("/registration")
+@RequestMapping("/register")
 public class UserRegistrationController {
 
 	@Autowired
@@ -34,7 +34,7 @@ public class UserRegistrationController {
 
 	@GetMapping
 	public String showRegistrationForm(Model model) {
-		return "registration";
+		return "register";
 	}
 
 	@PostMapping
@@ -44,10 +44,10 @@ public class UserRegistrationController {
 		userValidator.validate(userDto, result);
 
 		if (result.hasErrors()) {
-			return "registration";
+			return "register";
 		}
 
 		userService.save(userDto);
-		return "redirect:/registration?success";
+		return "redirect:/register?success";
 	}
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Add Food Item</title>
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div align="center" class="container-fluid">
+		<h1>Add New Item</h1>
+		<br />
+		<form action="#" th:action="@{/doctor/food/save}" th:object="${food}"
+			method="post">
+
+			<table class="table table-striped">
+				<tr>
+					<td>Food Name:</td>
+					<td><input type="text" th:field="*{name}" /></td>
+				</tr>
+				<tr>
+					<td>Quantity:</td>
+					<td><input type="text" th:field="*{quantity}" /></td>
+				</tr>
+				<tr>
+					<td>Unit:</td>
+					<td><input type="text" th:field="*{unit}" /></td>
+				</tr>
+				<tr>
+					<td>Calories:</td>
+					<td><input type="text" th:field="*{calories}" /></td>
+				</tr>
+				<tr>
+					<td>Proteins:</td>
+					<td><input type="text" th:field="*{proteins}" /></td>
+				</tr>
+				<tr>
+					<td>Carbohydrates:</td>
+					<td><input type="text" th:field="*{carbohydrates}" /></td>
+				</tr>
+				<tr>
+					<td>Fat:</td>
+					<td><input type="text" th:field="*{fat}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit" class="btn btn-success">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
